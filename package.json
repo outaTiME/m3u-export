@@ -1,0 +1,30 @@
+{
+  "name": "m3u-export",
+  "version": "0.1.0",
+  "description": "Export M3U references to folder.",
+  "homepage": "http://github.com/outaTiME/m3u-export",
+  "keywords": ["xml", "transformer", "json", "ejs", "cli"],
+  "author": "outaTiME <afalduto@gmail.com> (http://outatime.tumblr.com)",
+  "licenses": [{
+    "type": "Apache-2.0",
+    "url": "http://www.apache.org/licenses/LICENSE-2.0"
+  }],
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/outaTiME/m3u-export.git"
+  },
+  "bin": {
+    "m3u-export": "./bin/m3u-export"
+  },
+  "dependencies": {
+    "commander": "~1.1",
+    "colors": "~0.6",
+    "line-by-line": "~0.1",
+    "mkdirp": "~0.3",
+    "ncp": "~0.4"
+  },
+  "engines": {
+    "node": "~0.8"
+  },
+  "preferGlobal": true
+}
