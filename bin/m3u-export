@@ -26,7 +26,7 @@ program
   .option('-o, --output [directory]', 'output directory, if none will be create folder in the same m3u path')
   .usage('[options] <m3u file>');
 
-program.on('--help', function(){
+program.on('--help', function () {
   console.log('  Examples:');
   console.log('');
   console.log('    $ m3u-export test/test.m3u');
@@ -38,16 +38,32 @@ program.parse(process.argv);
 
 // events
 
-exporter.on("error", function(err) {
+exporter.on("error", function (err) {
   util.puts("");
   util.puts(err.message.red);
   util.puts("");
 });
 
-exporter.on("copied", function(file) {
-  util.puts(file.yellow);
+exporter.on("copied", function (file) {
+  util.puts(file.bold.green + " copied".magenta);
+});
+
+exporter.on("converted", function (file) {
+  util.puts(file.bold.green + " converted".yellow);
+});
+
+exporter.on("preserved", function (file) {
+  // util.puts("File " + file.bold.green + " preserved".cyan);
+});
+
+exporter.on("done", function (copied, preserved) {
+  util.puts("");
+  util.puts("---");
+  util.puts("");
+  util.puts(copied.toString().bold.green + " file(s) copied / converted".cyan);
+  util.puts(preserved.toString().bold.green + " file(s) preserved".cyan);
 });
 
 // export
 
-exporter.export(program.args[0], program.output);
+exporter["export"](program.args[0], program.output);
