@@ -38,30 +38,35 @@ program.parse(process.argv);
 
 // events
 
+exporter.on("start", function (copied, preserved) {
+  util.puts("Running:".underline);
+});
+
 exporter.on("error", function (err) {
   util.puts("");
   util.puts(err.message.red);
   util.puts("");
 });
 
-exporter.on("copied", function (file) {
-  util.puts(file.bold.green + " copied".magenta);
+exporter.on("copy", function (file) {
+  util.puts("Copy " + file.cyan);
 });
 
-exporter.on("converted", function (file) {
-  util.puts(file.bold.green + " converted".yellow);
+exporter.on("convert", function (file) {
+  util.puts("Convert " + file.cyan);
 });
 
-exporter.on("preserved", function (file) {
+exporter.on("preserve", function (file) {
+  util.puts("Preserve " + file.cyan);
   // util.puts("File " + file.bold.green + " preserved".cyan);
 });
 
 exporter.on("done", function (copied, preserved) {
   util.puts("");
-  util.puts("---");
-  util.puts("");
-  util.puts(copied.toString().bold.green + " file(s) copied / converted".cyan);
-  util.puts(preserved.toString().bold.green + " file(s) preserved".cyan);
+  util.puts("Done:".underline);
+  util.puts(">> ".green + copied + " files copied / converted");
+  util.puts(">> ".green + preserved + " files preserved");
+  util.puts(">> ".green + (copied + preserved) + " files");
 });
 
 // export
