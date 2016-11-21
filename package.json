@@ -17,11 +17,11 @@
     "m3u-export": "./bin/m3u-export"
   },
   "dependencies": {
-    "commander": "~1.1",
-    "colors": "~0.6",
+    "commander": "~2.9.0",
+    "colors": "~1.1.2",
     "line-by-line": "~0.1",
-    "mkdirp": "~0.3",
-    "ncp": "~0.4",
+    "mkdirp": "~0.5.1",
+    "ncp": "~2.0.0",
     "ffmpeg-node": "~0.0"
   },
   "engines": {
